@@ -1,0 +1,17 @@
+# F5 Security Auditor Requirements
+
+# Python 3.8+
+
+# No external dependencies required for basic functionality
+
+# The auditor uses only Python standard library
+
+# Optional: For enhanced features (uncomment if needed)
+
+# cryptography>=41.0.0  # For certificate validation
+
+# pyyaml>=6.0           # For YAML config support
+
+# requests>=2.31.0      # For API integration
+
+# colorama>=0.4.6       # For colored terminal output
