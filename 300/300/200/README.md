@@ -26,8 +26,7 @@ source venv/bin/activate
 which python
 # Should show: /path/to/your/project/venv/bin/python
 
-# Navigate to the python subdirectory where requirements.txt is located
-cd python
+# Navigate to the directory where requirements.txt is located
 
 # Install packages in the virtual environment
 pip install -r requirements.txt

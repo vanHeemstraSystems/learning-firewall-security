@@ -8,10 +8,10 @@
 
 # Optional: For enhanced features (uncomment if needed)
 
-# cryptography>=41.0.0  # For certificate validation
+cryptography>=41.0.0  # For certificate validation
 
-# pyyaml>=6.0           # For YAML config support
+pyyaml>=6.0           # For YAML config support
 
-# requests>=2.31.0      # For API integration
+requests>=2.31.0      # For API integration
 
-# colorama>=0.4.6       # For colored terminal output
+colorama>=0.4.6       # For colored terminal output
