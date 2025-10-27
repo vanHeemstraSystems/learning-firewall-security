@@ -539,8 +539,8 @@ def run_audit(self):
     return True
 
 def main():
-   """Main entry point"""
-   parser = argparse.ArgumentParser(
+    """Main entry point"""
+    parser = argparse.ArgumentParser(
       description="F5 BIG-IP Security Configuration Auditor",
       formatter_class=argparse.RawDescriptionHelpFormatter,
       epilog="""
