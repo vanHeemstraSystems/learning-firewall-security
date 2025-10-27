@@ -549,62 +549,62 @@ python3 f5_security_auditor.py –config-file bigip.conf
 python3 f5_security_auditor.py –config-file bigip.conf –output report.json –format json
 python3 f5_security_auditor.py –config-file bigip.conf –output report.txt
 """
-)
+    )
 
-parser.add_argument(
-    "--config-file",
-    required=True,
-    help="Path to F5 BIG-IP configuration file"
-)
+    parser.add_argument(
+        "--config-file",
+        required=True,
+        help="Path to F5 BIG-IP configuration file"
+    )
 
-parser.add_argument(
-    "--output",
-    help="Output file for the report (default: stdout)"
-)
+    parser.add_argument(
+        "--output",
+        help="Output file for the report (default: stdout)"
+    )
 
-parser.add_argument(
-    "--format",
-    choices=["text", "json"],
-    default="text",
-    help="Output format (default: text)"
-)
+    parser.add_argument(
+        "--format",
+        choices=["text", "json"],
+        default="text",
+        help="Output format (default: text)"
+    )
 
-parser.add_argument(
-    "--severity",
-    choices=["critical", "high", "medium", "low", "info"],
-    help="Filter findings by minimum severity level"
-)
+    parser.add_argument(
+        "--severity",
+        choices=["critical", "high", "medium", "low", "info"],
+        help="Filter findings by minimum severity level"
+    )
 
-args = parser.parse_args()
+    args = parser.parse_args()
 
-# Run audit
-auditor = F5SecurityAuditor(args.config_file)
+    # Run audit
+    auditor = F5SecurityAuditor(args.config_file)
 
-if not auditor.run_audit():
-    sys.exit(1)
-
-# Generate report
-report = auditor.generate_report(args.format)
-
-# Output report
-if args.output:
-    try:
-        with open(args.output, 'w') as f:
-            f.write(report)
-        print(f"\n[+] Report saved to: {args.output}")
-    except Exception as e:
-        print(f"[-] Error saving report: {str(e)}")
+    if not auditor.run_audit():
         sys.exit(1)
-else:
-    print("\n" + report)
 
-# Exit with appropriate code
-total_critical_high = len(auditor.findings['critical']) + len(auditor.findings['high'])
-if total_critical_high > 0:
-    print(f"\n[!] WARNING: Found {total_critical_high} critical/high severity findings!")
-    sys.exit(1)
+    # Generate report
+    report = auditor.generate_report(args.format)
 
-sys.exit(0)
+    # Output report
+    if args.output:
+        try:
+            with open(args.output, 'w') as f:
+                f.write(report)
+            print(f"\n[+] Report saved to: {args.output}")
+        except Exception as e:
+            print(f"[-] Error saving report: {str(e)}")
+            sys.exit(1)
+    else:
+        print("\n" + report)
+
+    # Exit with appropriate code
+    total_critical_high = len(auditor.findings['critical']) + len(auditor.findings['high'])
+    if total_critical_high > 0:
+        print(f"\n[!] WARNING: Found {total_critical_high} critical/high severity findings!")
+        sys.exit(1)
+
+    sys.exit(0)
 
 if __name__ == "__main__":
     main()
