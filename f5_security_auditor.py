@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-“””
+"""
 F5 BIG-IP Security Configuration Auditor
 A comprehensive tool for auditing F5 BIG-IP configurations against security best practices
-“””
+"""
 
 import re
 import json
@@ -13,9 +13,8 @@ from typing import Dict, List, Tuple
 from collections import defaultdict
 
 class F5SecurityAuditor:
-“”“Main auditor class for F5 BIG-IP security configuration analysis”””
+   """Main auditor class for F5 BIG-IP security configuration analysis"""
 
-```
 def __init__(self, config_file: str):
     self.config_file = config_file
     self.config_content = ""
@@ -538,22 +537,20 @@ def run_audit(self):
     
     print("\n[+] Audit completed successfully!")
     return True
-```
 
 def main():
-“”“Main entry point”””
-parser = argparse.ArgumentParser(
-description=“F5 BIG-IP Security Configuration Auditor”,
-formatter_class=argparse.RawDescriptionHelpFormatter,
-epilog=”””
+   """Main entry point"""
+   parser = argparse.ArgumentParser(
+      description="F5 BIG-IP Security Configuration Auditor",
+      formatter_class=argparse.RawDescriptionHelpFormatter,
+      epilog="""
 Examples:
 python3 f5_security_auditor.py –config-file bigip.conf
 python3 f5_security_auditor.py –config-file bigip.conf –output report.json –format json
 python3 f5_security_auditor.py –config-file bigip.conf –output report.txt
-“””
+"""
 )
 
-```
 parser.add_argument(
     "--config-file",
     required=True,
@@ -608,7 +605,6 @@ if total_critical_high > 0:
     sys.exit(1)
 
 sys.exit(0)
-```
 
-if **name** == “**main**”:
-main()
+if __name__ == "__main__":
+    main()
